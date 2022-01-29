@@ -14,7 +14,7 @@ import (
 	"runtime"
 	"strings"
 
-	"gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v3"
 )
 
 const (
@@ -58,9 +58,10 @@ func main() {
 	}
 
 	var err error
-	var excludes = map[string]bool{
-		".":       true,
-		"init.go": true,
+	var excludes = map[string]struct{}{
+		".":             {},
+		"init.go":       {},
+		"template.yaml": {},
 	}
 
 	var templateDir, srcDir = getSrcDir()
@@ -80,7 +81,7 @@ func main() {
 	}
 
 	err = filepath.Walk(templateDir, func(path string, info fs.FileInfo, err error) error {
-		if excludes[info.Name()] {
+		if _, ok := excludes[info.Name()]; ok {
 			return nil
 		}
 
