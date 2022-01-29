@@ -29,6 +29,11 @@ func getErrorType(err error) string {
 var (
 	hostname, _ = os.Hostname()
 
+	serverHTTP *prometheus.HistogramVec
+	clients    *prometheus.HistogramVec
+)
+
+func Init() {
 	serverHTTP = promauto.NewHistogramVec(
 		prometheus.HistogramOpts{
 			Namespace: Namespace,
@@ -46,7 +51,7 @@ var (
 			Help:      "clients metrics",
 			Buckets:   []float64{.001, .005, .01, .025, .05, .1, .5, 1, 2.5, 5, 10},
 		}, []string{"hostname", "client", "method"})
-)
+}
 
 // HistogramObserverServer .
 func HistogramObserverServer(method string, err error) prometheus.Observer {

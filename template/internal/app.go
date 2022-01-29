@@ -8,6 +8,8 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/rs/zerolog"
+
+	"github.com/andrdru/gosvc/template/metrics"
 )
 
 type (
@@ -42,6 +44,7 @@ func initLogger() zerolog.Logger {
 }
 
 func initMetrics(logger *zerolog.Logger) {
+	metrics.Init()
 	http.Handle("/metrics", promhttp.Handler())
 	if err := http.ListenAndServe(metricsAddr, nil); err != nil {
 		logger.Error().Msgf("metrics not served")
