@@ -40,8 +40,8 @@ github.com/alecthomas/units v0.0.0-20190717042225-c3de453c63f4/go.mod h1:ybxpYRF
 github.com/alecthomas/units v0.0.0-20190924025748-f65c72e2690d/go.mod h1:rBZYJk541a8SKzHPHnH3zbiI+7dagKZ0cgpgrD7Fyho=
 github.com/andrdru/gosvc/apimsg v0.1.0 h1:XJLfU5X9m1KICI4WIriM4pZSba7y6wlgStHEU8MBrQI=
 github.com/andrdru/gosvc/apimsg v0.1.0/go.mod h1:JpE/wEXl6rAzTINMrCXbW6fwRng7Gq8yefYWqB62D+c=
-github.com/andrdru/gosvc/middlewares v0.1.0 h1:2TO7AF6Ja652NZdd6fGOHL18RrRsIIbwbTazB4sG5HQ=
-github.com/andrdru/gosvc/middlewares v0.1.0/go.mod h1:FykXIb6xEtsYpfdWne5vjmYZeGfhse0ePoAkdx2T92Q=
+github.com/andrdru/gosvc/middlewares v0.1.1 h1:AxYsE0VNiw7wF1TJxX3KtH4v/npf1MOefW5BYDMGZGQ=
+github.com/andrdru/gosvc/middlewares v0.1.1/go.mod h1:FykXIb6xEtsYpfdWne5vjmYZeGfhse0ePoAkdx2T92Q=
 github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973/go.mod h1:Dwedo/Wpr24TaqPxmxbtue+5NUziq4I4S80YR8gNf3Q=
 github.com/beorn7/perks v1.0.0/go.mod h1:KWe93zE9D1o94FZ5RNwFwVgaQK1VOXiVxmqh+CedLV8=
 github.com/beorn7/perks v1.0.1 h1:VlbKKnNfV8bJzeqoa4cOKqO6bYr3WgKZxO8Z16+hsOM=

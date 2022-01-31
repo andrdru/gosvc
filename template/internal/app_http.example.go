@@ -1,6 +1,7 @@
 package internal
 
 import (
+	"io/ioutil"
 	"log"
 	"net/http"
 
@@ -18,7 +19,6 @@ func init() {
 	// redefine app initial handler
 	runHandler = func(fv flags, logger *zerolog.Logger) {
 		var mw = []m.Middleware{
-			m.BodyReader(logger),
 			m.Logger(logger),
 			middlewares.HTTPServerLatency(logger),
 		}
@@ -50,14 +50,18 @@ func handlerExample(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// read request body
-	var body = m.GetBodyCtx(r.Context())
+	var body, err = ioutil.ReadAll(r.Body)
+	if err != nil {
+		log.Printf("could not read request body")
+		return
+	}
 	if len(body) > 0 {
 		resp.ParamPOST = string(body)
 	}
 
 	msg.Data = resp
 
-	var err = msg.Return(w)
+	err = msg.Return(w)
 	if err != nil {
 		log.Printf("write response: %s", err)
 	}
