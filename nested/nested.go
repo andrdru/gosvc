@@ -2,12 +2,17 @@ package nested
 
 type (
 	// Nested loader abstraction
-	Nested map[string]struct{}
+	Nested interface {
+		With(name string) Nested
+		Has(name string) (exists bool)
+	}
+
+	nested map[string]struct{}
 )
 
 // NewNested .
-func NewNested(with ...string) (ret *Nested) {
-	*ret = make(Nested)
+func NewNested(with ...string) (ret Nested) {
+	ret = make(nested)
 	for _, w := range with {
 		ret = ret.With(w)
 	}
@@ -16,13 +21,13 @@ func NewNested(with ...string) (ret *Nested) {
 }
 
 // With add item to loader
-func (n *Nested) With(name string) *Nested {
-	(*n)[name] = struct{}{}
+func (n nested) With(name string) Nested {
+	n[name] = struct{}{}
 	return n
 }
 
 // Has check if item has in loader
-func (n Nested) Has(name string) (exists bool) {
+func (n nested) Has(name string) (exists bool) {
 	_, exists = n[name]
 	return exists
 }
